@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "warpfwi"
+version = "0.1.0"
+description = "Warp-FWI: local time-shift and gain auxiliary for cycle-skip mitigation in FWI."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Warp-FWI authors" }]
+dependencies = [
+    "torch==2.11.0",
+    "deepwave==0.0.26",
+    "numpy==2.4.4",
+    "scipy==1.17.1",
+    "matplotlib==3.10.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.0.3",
+    "ruff>=0.5",
+    "black>=24.0",
+]
+notebook = [
+    "jupyterlab==4.5.6",
+    "ipykernel==7.2.0",
+    "ipywidgets==8.1.8",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
